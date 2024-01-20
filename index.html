@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            height: 100vh;
+            display: grid;
+            align-content: center;
+        }
+        
+        section {
+            margin: auto;
+        }
+        
+        #Lines {
+            width: 80%;
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: center;
+            margin: auto;
+            justify-content: center;
+            background: #02032a;
+            border: 5px solid #000;
+        }
+        
+        .Line {
+            width: 100px;
+            overflow: hidden;
+        }
+        
+        #Lines div {
+            display: flex;
+            height: 200px;
+            animation: bounce var(--duration) infinite linear var(--delay);
+            transform-origin: bottom;
+            animation-play-state: paused;
+        }
+        
+        @keyframes bounce {
+            0%,
+            100% {
+                transform: scaleY(1);
+            }
+            50% {
+                transform: scaleY(0.5);
+            }
+        }
+        
+        #one {
+            background: #5b5bdf;
+            --duration: 2.5s;
+            --delay: 0s;
+        }
+        
+        #two {
+            background: #ef37cd;
+            --duration: 2s;
+            --delay: 0.2s;
+        }
+        
+        #three {
+            background: #ed8626;
+            --duration: 3s;
+            --delay: 0.4s;
+        }
+        
+        #four {
+            background: #dec952;
+            --duration: 3.5s;
+            --delay: 0.6s;
+        }
+        
+        #five {
+            background: #fbff00;
+            --duration: 3.7s;
+            --delay: 0.8s;
+        }
+        
+        #buttons {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        #buttons button {
+            margin: 0 10px;
+            padding: 5px 15px;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+        }
+        
+        #start {
+            background: #00ff00;
+        }
+        
+        #reset {
+            background: #8908f3;
+        }
+        
+        #stop {
+            background: #ff0000;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <div id="Lines">
+            <div class="Line" id="one"></div>
+            <div class="Line" id="two"></div>
+            <div class="Line" id="three"></div>
+            <div class="Line" id="four"></div>
+            <div class="Line" id="five"></div>
+        </div>
+        <div id="buttons">
+            <button id="start" onclick="startAnimation()">Start</button>
+            <button id="reset" onclick="resetAnimation()">Reset</button>
+            <button id="stop" onclick="stopAnimation()">Stop</button>
+        </div>
+    </section>
+
+    <script>
+        line.style.animationPlayState = 'paused';
+
+        function startAnimation() {
+            document.querySelectorAll('.Line').forEach(line => {
+                line.style.animationPlayState = 'running';
+            });
+        }
+
+        function resetAnimation() {
+            document.querySelectorAll('.Line').forEach(line => {
+                line.style.animation = 'none';
+                void line.offsetWidth;
+                line.style.animation = 'bounce var(--duration) infinite linear var(--delay)';
+                line.style.animationPlayState = 'paused';
+            });
+        }
+
+        function stopAnimation() {
+            document.querySelectorAll('.Line').forEach(line => {
+                line.style.animationPlayState = 'paused';
+            });
+        }
+    </script>
+</body>
+
+</html>
